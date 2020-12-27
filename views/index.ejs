@@ -1,0 +1,45 @@
+<%- include("partials/header")%>
+<div class="ui vertical masthead center aligned segment">
+<div class="ui main text container">
+    <% if(images.length > 0){ %>
+    <div class="ui huge header">My Image Gallery</div>
+    <div class="ui fluid icon input">
+        <input type="text" placeholder="Search images by name...">
+        <i class="search icon"></i>
+    </div>
+    <div class="ui top attached segment">
+        <div class="ui divided items" >
+            <% images.forEach(function(image){ %>
+                    <div class="item">
+                        <div class="image">
+                            <img class="ui centered rounded image" src="data:image/<%=image.image.contentType%>;base64,<%=image.image.data.toString('base64')%>">
+                        </div>
+                        <div class="content">
+                            <a class="ui header" href="/images/<%=image._id%>"> <%= image.title %> </a>
+                            <div class="meta">
+                                <span> <%=image.created.toDateString()%></span>
+                            </div>
+                            <div class="description">
+                                <p> <%-image.description.substring(0,150)%>...</p>
+                            </div>    
+                            <div class="extra">
+                                <a class="ui floated basic violet button" href="/images/<%=image._id%>">Read More
+                                <i class="right chevron icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div> 
+            <% }) %>
+        </div>
+    </div>
+    <% }else { %>
+            <div class="ui huge header">My Image Gallery</div>
+            <div> Add some images ....</div>
+    <% } %>
+</div>
+</div>
+   
+
+
+
+<%- include("partials/footer")%>

@@ -1,0 +1,28 @@
+<%- include("partials/header")%>
+
+<div class="ui main text container segment">
+    <div class="ui huge header"> <%=image.title%> </div>
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui centered rounded image" src="data:image/<%=image.image.contentType%>;base64,<%=image.image.data.toString('base64')%>">
+        </div>
+        <div class="dates">
+            <span> <strong> Date: </strong> <%=image.created.toDateString()%></span>
+        </div>
+        <div>
+            <p><strong> Description: </strong></p>
+            <p> <%-image.description%> </p>
+            <br>
+        </div>
+        <a class="ui basic green button" href="/images/<%=image._id%>/edit">Edit</a>
+        <form id="delete" method="POST" action="/images/<%=image._id%>?_method=DELETE">
+            <div class="field"> 
+                <button class="ui basic red button"> Delete </button>
+            </div>
+        </form>
+    </div>
+</div>        
+
+<%- include("partials/footer")%>
+
+

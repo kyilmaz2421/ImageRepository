@@ -1,0 +1,27 @@
+<%- include("partials/header")%>
+
+
+<div class="ui main text container segment">
+    <div class="ui huge header"> New Image</div>
+    <form class="ui form" method="POST" action="/images" enctype="multipart/form-data">
+        <div class="field"> 
+            <label for="title"> Title</label>
+            <input type="text" name="title" placeholder="Title" required> 
+        </div>
+        <div class="field">
+            <label for="myImage">Select a file: (allowed only .png, .jpg, .jpeg)</label>
+            <input type="file" name="myImage" accept="image/*" required>  
+        </div>     
+        <div class="field"> 
+            <label for="description"> Image Description</label>
+            <textarea name="description" id="" cols="30" rows="10" placeholder="Image caption or description"></textarea>
+        </div>
+        <div class="field"> 
+            <input class="ui basic violet button" type="submit" name="" id=""> 
+        </div>
+    </form>
+</div>
+
+
+
+<%- include("partials/footer")%>

@@ -1,0 +1,21 @@
+i.icon{
+    font-size: 2em;
+}
+
+.container.main{
+    margin-top: 7.0em;
+
+}
+
+#delete {
+    padding: 332%;
+    display: inline-block;
+}
+
+.dates {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+
+
