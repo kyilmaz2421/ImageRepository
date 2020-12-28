@@ -6,22 +6,22 @@ const fs = require("fs");
 const path = require("path");
 const upload = require("../middleware/imageUpload");
 
-//INDEX
+//GETS IMAGES (accepts search queries)
 router.get("/", (req, res) => {
-  const query = {}
-  if (req.query.search){
-    query.title = { "$regex": req.query.search, "$options": "i" }
+  const query = {};
+  if (req.query.search) {
+    query.title = { $regex: req.query.search, $options: "i" };
   }
   Image.find(query, function (err, images) {
     if (err) {
       console.log(err);
     } else {
-      res.render("index", { images, isSearch :req.query.search});
+      res.render("index", { images, isSearch: req.query.search });
     }
   });
 });
 
-//NEW
+//SERVE PAGE TO UPLOAD IMAGE
 router.get("/new", (req, res) => {
   res.render("new");
 });
@@ -61,7 +61,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-//EDIT
+//SERVES EDIT PAGE
 router.get("/:id/edit", (req, res) => {
   Image.findById(req.params.id, function (err, image) {
     if (err) {
@@ -72,6 +72,7 @@ router.get("/:id/edit", (req, res) => {
   });
 });
 
+//SUBMITS EDITS
 router.put("/:id/", (req, res) => {
   Image.findOne({ _id: req.params.id }, (err, image) => {
     if (err) {
@@ -103,7 +104,7 @@ router.delete("/:id", (req, res) => {
       fs.unlink(imagePath, (err) => {
         image.remove((err) => {
           if (err) {
-              console.error(err);
+            console.error(err);
           }
         });
       });
