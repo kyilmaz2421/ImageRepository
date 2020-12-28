@@ -101,15 +101,11 @@ router.delete("/:id", (req, res) => {
         "/images/" +
         image.image.filename;
       fs.unlink(imagePath, (err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          image.remove((err) => {
-            if (err) {
+        image.remove((err) => {
+          if (err) {
               console.error(err);
-            }
-          });
-        }
+          }
+        });
       });
     }
   });
