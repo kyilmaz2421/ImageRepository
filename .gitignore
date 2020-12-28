@@ -4,4 +4,3 @@ config
 .DS_Store
 public/.DS_Store
 .prettierrc.json
-public/images
