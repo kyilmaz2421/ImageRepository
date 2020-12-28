@@ -8,11 +8,15 @@ const upload = require("../middleware/imageUpload");
 
 //INDEX
 router.get("/", (req, res) => {
-  Image.find({}, function (err, images) {
+  const query = {}
+  if (req.query.search){
+    query.title = { "$regex": req.query.search, "$options": "i" }
+  }
+  Image.find(query, function (err, images) {
     if (err) {
       console.log(err);
     } else {
-      res.render("index", { images });
+      res.render("index", { images, isSearch :req.query.search});
     }
   });
 });

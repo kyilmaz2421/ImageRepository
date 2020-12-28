@@ -1,34 +1,47 @@
 <%- include("partials/header")%>
 <div class="ui vertical masthead center aligned segment">
 <div class="ui main text container">
-    <% if(images.length > 0){ %>
-    <div class="ui huge header">My Image Gallery</div>
-    <div class="ui top attached segment">
-        <div class="ui divided items" >
-            <% images.forEach(function(image){ %>
-                    <div class="item">
-                        <div class="image">
-                            <img class="ui centered rounded image" src="data:image/<%=image.image.contentType%>;base64,<%=image.image.data.toString('base64')%>">
-                        </div>
-                        <div class="content">
-                            <a class="ui header" href="/images/<%=image._id%>"> <%= image.title %> </a>
-                            <div class="meta">
-                                <span> <%=image.created.toDateString()%></span>
-                            </div>
-                            <div class="description">
-                                <p> <%-image.description.substring(0,150)%>...</p>
-                            </div>    
-                            <div class="extra">
-                                <a class="ui floated basic violet button" href="/images/<%=image._id%>">Options
-                                <i class="right chevron icon"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div> 
-            <% }) %>
-        </div>
-    </div>
-    <% }else { %>
+    <% if(images.length > 0 || isSearch){ %>
+        <div class="ui huge header">My Image Gallery</div>
+        <form method="GET" action="/images">
+            <div class="ui fluid action input">
+                <input name="search" type="text" placeholder="Search by image name..." required>
+                <button type="submit" class="ui primary button">Click to Search</button>
+            </div>
+        </form>
+        <% if(images.length > 0 && isSearch){ %>
+            <div><strong>search results found: <%=images.length%>  (click the home button to remove search paramaters)</strong></div>
+        <% } %>
+        <% if(images.length == 0 && isSearch){ %> 
+            <div><strong>No results found from search, Try again (click the home button to remove search paramaters)</strong></div>
+        <% } else { %>
+            <div class="ui top attached segment">
+                <div class="ui divided items" >
+                    <% images.forEach(function(image){ %>
+                            <div class="item">
+                                <div class="image">
+                                    <img class="ui centered rounded image" src="data:image/<%=image.image.contentType%>;base64,<%=image.image.data.toString('base64')%>">
+                                </div>
+                                <div class="content">
+                                    <a class="ui header" href="/images/<%=image._id%>"> <%= image.title %> </a>
+                                    <div class="meta">
+                                        <span> <%=image.created.toDateString()%></span>
+                                    </div>
+                                    <div class="description">
+                                        <p> <%-image.description.substring(0,150)%>...</p>
+                                    </div>    
+                                    <div class="extra">
+                                        <a class="ui floated basic violet button" href="/images/<%=image._id%>">Options
+                                        <i class="right chevron icon"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div> 
+                    <% }) %>
+                </div>
+            </div>
+        <% } %>
+    <% } else { %>
             <div class="ui huge header">My Image Gallery</div>
             <a href="/images/new" class="ui primary button">
                 Add a new Image .... 
