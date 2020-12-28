@@ -12,7 +12,6 @@ router.get("/", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(images);
       res.render("index", { images });
     }
   });

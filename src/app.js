@@ -22,5 +22,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, function () {
-  console.log("Node Server started at", port);
+  console.log("Node Server started at port:", port);
 });

@@ -2,16 +2,18 @@
 
 
 <div class="ui main text container segment">
-    <div class="ui huge header"> EDIT <%= image.title%></div>
+    <div class="ui huge header"> EDIT '<%= image.title%>'</div>
     <form class="ui form" method="POST" action="/images/<%=image._id%>?_method=PUT">
         <div class="field"> 
             <label for=""> Title</label>
             <input type="text" name="image[title]" value="<%=image.title%>"> 
         </div>
-        <div class="field"> 
-            <label for=""> Image Description</label>
-            <textarea name="image[description]" id="" cols="30" rows="10" placeholder="Image Description"><%=image.description%></textarea>
-        </div>
+        <% if(image.description){ %>
+            <div class="field"> 
+                <label for=""> Image Description</label>
+                <textarea name="image[description]" id="" cols="30" rows="10" placeholder="Image Description"><%=image.description%></textarea>
+            </div>
+        <% } %>
         <div class="field"> 
             <input class="ui violet big basic button" type="submit"> 
         </div>

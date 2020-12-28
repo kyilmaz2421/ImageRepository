@@ -3,10 +3,6 @@
 <div class="ui main text container">
     <% if(images.length > 0){ %>
     <div class="ui huge header">My Image Gallery</div>
-    <div class="ui fluid icon input">
-        <input type="text" placeholder="Search images by name...">
-        <i class="search icon"></i>
-    </div>
     <div class="ui top attached segment">
         <div class="ui divided items" >
             <% images.forEach(function(image){ %>
@@ -23,7 +19,7 @@
                                 <p> <%-image.description.substring(0,150)%>...</p>
                             </div>    
                             <div class="extra">
-                                <a class="ui floated basic violet button" href="/images/<%=image._id%>">Read More
+                                <a class="ui floated basic violet button" href="/images/<%=image._id%>">Options
                                 <i class="right chevron icon"></i>
                                 </a>
                             </div>
@@ -34,7 +30,9 @@
     </div>
     <% }else { %>
             <div class="ui huge header">My Image Gallery</div>
-            <div> Add some images ....</div>
+            <a href="/images/new" class="ui primary button">
+                Add a new Image .... 
+            </a>
     <% } %>
 </div>
 </div>

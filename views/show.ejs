@@ -9,11 +9,13 @@
         <div class="dates">
             <span> <strong> Date: </strong> <%=image.created.toDateString()%></span>
         </div>
-        <div>
-            <p><strong> Description: </strong></p>
-            <p> <%-image.description%> </p>
-            <br>
-        </div>
+        <% if(image.description){ %>
+            <div>
+                <p><strong> Description: </strong></p>
+                <p> <%-image.description%> </p>
+                <br>
+            </div>
+        <% } %>
         <a class="ui basic green button" href="/images/<%=image._id%>/edit">Edit</a>
         <form id="delete" method="POST" action="/images/<%=image._id%>?_method=DELETE">
             <div class="field"> 
