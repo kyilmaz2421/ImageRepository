@@ -33,7 +33,7 @@ const upload = (req, res, next) => {
     if (err instanceof multer.MulterError) {
       return res.render("new", {
         error:
-          "Only .png, .jpg, .jpeg, and .gif files that are under 2mb are allowed!",
+          "Only .png, .jpg, .jpeg, and .gif files under 2mb are allowed!",
       });
     }
     next();
