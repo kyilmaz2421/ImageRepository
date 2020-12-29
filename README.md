@@ -30,7 +30,3 @@ The ability to change the title and the option to add, remove, or change the des
 Based on the inputted search string the system does a regex substring match on the titles and returns the relevant images posted. 
 
 By default upon landing on the front page there is no specific search query made and only 10 images are sent at a time. The limit of images sent can be changed through a url query and the backend will handle this.
-
-Please 
-
-
