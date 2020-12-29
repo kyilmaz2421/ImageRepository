@@ -1,6 +1,6 @@
 # Shopify Image Repository
 
-Hosted at https://shopify-image-repository.herokuapp.com/ 
+Hosted at https://shopify-image-repository.herokuapp.com/
 
 NOTE: The database is hosted using MongoDB atlas free tier and therefore is slightly slow in sending large image files.
 
@@ -21,12 +21,14 @@ The ability to upload and post any image with a title and an optional descriptio
 
 Removes the image from database and deletes its files.
 
+
 ## EDIT 
 
 The ability to change the title and the option to add, remove, or change the description of a specific post.
 
+
 ## SEARCH & GET
 
-Based on the inputted search string the system does a regex substring match on the titles and returns the relevant images posted. 
+Based on the inputted search string the system does a regex substring match on the titles and returns the relevant images posted.
 
-By default upon landing on the front page there is no specific search query made and only 10 images are sent at a time. The limit of images sent can be changed through a url query and the backend will handle this.
+By default, upon landing on the front page there is no specific search query made and only 10 images are sent at a time. The limit of images sent can be changed through a url query and the backend will handle this.
