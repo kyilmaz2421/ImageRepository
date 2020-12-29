@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
 
 //SERVE PAGE TO UPLOAD IMAGE
 router.get("/new", (req, res) => {
-  res.render("new", {error: null});
+  res.render("new", { error: null });
 });
 
 //CREATE
@@ -101,11 +101,11 @@ router.delete("/:id", (req, res) => {
         "/images/" +
         image.image.filename;
       fs.unlink(imagePath, (err) => {
-          image.remove((err) => {
-            if (err) {
-              console.error(err);
-            }
-            res.redirect("/images");
+        image.remove((err) => {
+          if (err) {
+            console.error(err);
+          }
+          res.redirect("/images");
         });
       });
     }
