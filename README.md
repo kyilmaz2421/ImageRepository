@@ -1,4 +1,4 @@
-# ShopifyImageRepository
+# Shopify Image Repository
 
 Hosted at https://shopify-image-repository.herokuapp.com/ 
 
