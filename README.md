@@ -2,7 +2,7 @@
 
 Hosted at https://shopify-image-repository.herokuapp.com/ 
 
-(The database is hosted using MongoDB atlas free tier and therefore is slightly slow in sending large files)
+NOTE: The database is hosted using MongoDB atlas free tier and therefore is slightly slow in sending large image files.
 
 
 # Introduction
