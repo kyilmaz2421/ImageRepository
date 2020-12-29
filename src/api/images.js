@@ -23,11 +23,11 @@ router.get("/", (req, res) => {
 
 //SERVE PAGE TO UPLOAD IMAGE
 router.get("/new", (req, res) => {
-  res.render("new");
+  res.render("new", {error: null});
 });
 
 //CREATE
-router.post("/", upload.single("myImage"), (req, res) => {
+router.post("/", upload, (req, res) => {
   const publicDirectoryPath = path.join(__dirname, "../../public");
   var imageObj = {
     title: req.body.title,
@@ -40,13 +40,11 @@ router.post("/", upload.single("myImage"), (req, res) => {
       filename: req.file.filename,
     },
   };
-  console.log(imageObj.image);
   Image.create(imageObj, function (err, newEntry) {
     if (err) {
       console.log(err);
-    } else {
-      res.redirect("/");
     }
+    res.redirect("/images");
   });
 });
 
@@ -95,6 +93,7 @@ router.put("/:id/", (req, res) => {
 router.delete("/:id", (req, res) => {
   Image.findOne({ _id: req.params.id }, (err, image) => {
     if (err) {
+      res.redirect("/images");
       console.error(err);
     } else {
       const imagePath =
@@ -102,15 +101,15 @@ router.delete("/:id", (req, res) => {
         "/images/" +
         image.image.filename;
       fs.unlink(imagePath, (err) => {
-        image.remove((err) => {
-          if (err) {
-            console.error(err);
-          }
+          image.remove((err) => {
+            if (err) {
+              console.error(err);
+            }
+            res.redirect("/images");
         });
       });
     }
   });
-  res.redirect("/images");
 });
 
 module.exports = router;

@@ -1,7 +1,9 @@
 <%- include("partials/header")%>
 
-
 <div class="ui main text container segment">
+    <% if(error){ %>
+        <div class="ui red message"><%=error%></div>
+    <% } %>
     <div class="ui huge header"> New Image</div>
     <form class="ui form" method="POST" action="/images" enctype="multipart/form-data">
         <div class="field"> 
