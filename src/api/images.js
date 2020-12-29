@@ -8,6 +8,7 @@ const upload = require("../middleware/imageUpload");
 
 //GETS IMAGES (accepts search queries)
 router.get("/", (req, res) => {
+  const limit = parseInt(req.query.limit) || 10
   const query = {};
   if (req.query.search) {
     query.title = { $regex: req.query.search, $options: "i" };
@@ -18,7 +19,7 @@ router.get("/", (req, res) => {
     } else {
       res.render("index", { images, isSearch: req.query.search });
     }
-  });
+  }).limit(limit);
 });
 
 //SERVE PAGE TO UPLOAD IMAGE
